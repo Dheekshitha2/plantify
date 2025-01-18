@@ -1,15 +1,38 @@
-import React, { useEffect } from 'react';
-import testSupabaseConnection from './testSupabaseConnection.js';
+// import React from 'react';
+// import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+// import Login from './components/Login';
+// import Register from './components/Register';
+
+// function App() {
+//   return (
+//     <Router>
+//       <Routes>
+//         <Route path="/login" element={<Login />} />
+//         <Route path="/register" element={<Register />} />
+//         <Route path="*" element={<Navigate replace to="/login" />} />
+//       </Routes>
+//     </Router>
+//   );
+// }
+
+// export default App;
+
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Login from './components/Login';
+import Register from './components/Register';
+import Home from './components/Home';  // Import the Home component
 
 function App() {
-  useEffect(() => {
-    testSupabaseConnection();
-  }, []);  // The empty array ensures it runs only once after the component mounts
-
   return (
-    <div className="App">
-      <h1>Check the console for Supabase connection test results</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Navigate replace to="/login" />} />
+      </Routes>
+    </Router>
   );
 }
 
